@@ -1,130 +1,518 @@
-var geheimwoord;
-var geheimeLetters;
+var quicklist = var words = [
+  "appel",
+  "aldus",
+  "afwas",
+  "aftel",
+  "aarde",
+  "armen",
+  "actie",
+  "apart",
+  "adres",
+  "avond",
+  "aders",
+  "alarm",
+  "boten",
+  "balen",
+  "beter",
+  "bomen",
+  "boren",
+  "boven",
+  "boxen",
+  "brood",
+  "broek",
+  "brand",
+  "breed",
+  "benen",
+  "beeld",
+  "brief",
+  "beten",
+  "basis",
+  "blauw",
+  "beren",
+  "buren",
+  "banen",
+  "bloed",
+  "broer",
+  "blond",
+  "boter",
+  "beleg",
+  "breng",
+  "baken",
+  "beker",
+  "blind",
+  "bezig",
+  "baden",
+  "bedel",
+  "bazen",
+  "bazin",
+  "baren",
+  "beden",
+  "beken",
+  "bezem",
+  "baard",
+  "bidet",
+  "breuk",
+  "conus",
+  "cello",
+  "creme",
+  "cloud",
+  "cacao",
+  "cadet",
+  "cavia",
+  "ceder",
+  "combi",
+  "china",
+  "clown",
+  "draai",
+  "deden",
+  "dalen",
+  "derde",
+  "delen",
+  "dwaas",
+  "daden",
+  "dader",
+  "dames",
+  "diner",
+  "datum",
+  "dozen",
+  "dreun",
+  "duits",
+  "dagen",
+  "deren",
+  "dwerg",
+  "dwaal",
+  "dwing",
+  "druil",
+  "droog",
+  "draad",
+  "dweil",
+  "drank",
+  "duren",
+  "dwars",
+  "drugs",
+  "daten",
+  "daler",
+  "doorn",
+  "disco",
+  "degen",
+  "droom",
+  "dient",
+  "drone",
+  "dadel",
+  "duwen",
+  "druif",
+  "deken",
+  "deler",
+  "elven",
+  "eigen",
+  "enger",
+  "engel",
+  "elder",
+  "enkel",
+  "effen",
+  "email",
+  "egaal",
+  "fiets",
+  "friet",
+  "files",
+  "forel",
+  "films",
+  "feest",
+  "fruit",
+  "falen",
+  "flora",
+  "fauna",
+  "feeen",
+  "freak",
+  "forum",
+  "fusie",
+  "geven",
+  "gaven",
+  "groen",
+  "graai",
+  "getal",
+  "grens",
+  "grond",
+  "groef",
+  "graal",
+  "gewei",
+  "games",
+  "grote",
+  "groet",
+  "garen",
+  "gebak",
+  "graag",
+  "genre",
+  "glans",
+  "geluk",
+  "geeuw",
+  "horen",
+  "heren",
+  "halen",
+  "hagel",
+  "haren",
+  "helen",
+  "harde",
+  "hemel",
+  "hoofd",
+  "huren",
+  "hamer",
+  "haken",
+  "heden",
+  "hotel",
+  "hobby",
+  "heler",
+  "hoger",
+  "ieder",
+  "index",
+  "immer",
+  "icoon",
+  "inlog",
+  "inzet",
+  "innig",
+  "jovel",
+  "jaren",
+  "jicht",
+  "jabot",
+  "jacht",
+  "jaden",
+  "jagen",
+  "jager",
+  "japon",
+  "jarig",
+  "jawel",
+  "jeans",
+  "jemig",
+  "jeugd",
+  "joint",
+  "jonas",
+  "joule",
+  "koken",
+  "kreet",
+  "koker",
+  "kerst",
+  "kegel",
+  "koude",
+  "kader",
+  "krent",
+  "kamer",
+  "kaars",
+  "kaart",
+  "kraan",
+  "krant",
+  "keren",
+  "kruid",
+  "kerel",
+  "kubus",
+  "kraal",
+  "kleur",
+  "kroon",
+  "klein",
+  "korst",
+  "klopt",
+  "kabel",
+  "kunst",
+  "kopje",
+  "krans",
+  "klimt",
+  "kater",
+  "klink",
+  "kudde",
+  "kruis",
+  "lopen",
+  "laten",
+  "lepel",
+  "links",
+  "laden",
+  "leven",
+  "lezen",
+  "lucht",
+  "lenen",
+  "laser",
+  "lente",
+  "licht",
+  "lader",
+  "leder",
+  "lunch",
+  "lijst",
+  "leger",
+  "leden",
+  "legen",
+  "lagen",
+  "lezer",
+  "lever",
+  "lingo",
+  "loper",
+  "luier",
+  "lager",
+  "leeuw",
+  "maand",
+  "malen",
+  "maken",
+  "media",
+  "meter",
+  "motor",
+  "maten",
+  "markt",
+  "mazen",
+  "molen",
+  "meest",
+  "meren",
+  "model",
+  "meden",
+  "maden",
+  "macht",
+  "meeuw",
+  "mager",
+  "magen",
+  "maren",
+  "manen",
+  "noord",
+  "nieuw",
+  "negen",
+  "namen",
+  "neven",
+  "nodig",
+  "naden",
+  "neder",
+  "nemen",
+  "onder",
+  "optel",
+  "ovaal",
+  "ovale",
+  "onwel",
+  "optie",
+  "orden",
+  "oppas",
+  "ouder",
+  "ophef",
+  "oases",
+  "palen",
+  "plein",
+  "pegel",
+  "paars",
+  "prijs",
+  "piano",
+  "pixel",
+  "paden",
+  "pasta",
+  "pizza",
+  "poten",
+  "paard",
+  "puber",
+  "pauze",
+  "preek",
+  "polis",
+  "pater",
+  "proef",
+  "panda",
+  "penis",
+  "prins",
+  "pluto",
+  "polen",
+  "plint",
+  "quota",
+  "quant",
+  "quark",
+  "queue",
+  "quilt",
+  "quote",
+  "robot",
+  "reken",
+  "raden",
+  "regen",
+  "radio",
+  "rente",
+  "regio",
+  "rugby",
+  "reden",
+  "roken",
+  "ruzie",
+  "ruist",
+  "regel",
+  "racen",
+  "races",
+  "riool",
+  "ramen",
+  "radar",
+  "roman",
+  "rokje",
+  "razen",
+  "roede",
+  "staan",
+  "staal",
+  "speel",
+  "steeg",
+  "stoel",
+  "stook",
+  "steek",
+  "schep",
+  "spijs",
+  "stoep",
+  "shirt",
+  "samen",
+  "sites",
+  "sport",
+  "spalk",
+  "sjaal",
+  "storm",
+  "staat",
+  "steun",
+  "strak",
+  "serie",
+  "shows",
+  "schat",
+  "snoep",
+  "sfeer",
+  "smeer",
+  "speer",
+  "scene",
+  "speld",
+  "smeed",
+  "smaak",
+  "super",
+  "stand",
+  "steer",
+  "smelt",
+  "sedan",
+  "skier",
+  "sluis",
+  "sneer",
+  "steel",
+  "truck",
+  "terug",
+  "typen",
+  "talen",
+  "taboe",
+  "tegel",
+  "taart",
+  "tafel",
+  "trouw",
+  "teken",
+  "teren",
+  "taken",
+  "treur",
+  "tenen",
+  "titel",
+  "thuis",
+  "tiara",
+  "teder",
+  "toets",
+  "tabak",
+  "trein",
+  "tarwe",
+  "telen",
+  "teler",
+  "uiten",
+  "uilig",
+  "uitje",
+  "uiver",
+  "ultra",
+  "uniek",
+  "uppie",
+  "uraan",
+  "uiers",
+  "velen",
+  "vloer",
+  "video",
+  "varen",
+  "vegen",
+  "veren",
+  "vader",
+  "vaten",
+  "vuren",
+  "vrouw",
+  "vlees",
+  "vogel",
+  "vroeg",
+  "vezel",
+  "veins",
+  "vorst",
+  "veder",
+  "vanaf",
+  "vieze",
+  "veger",
+  "villa",
+  "veler",
+  "vrede",
+  "vries",
+  "woord",
+  "wagen",
+  "wonen",
+  "waren",
+  "warme",
+  "weten",
+  "water",
+  "weren",
+  "wazig",
+  "wegen",
+  "weven",
+  "wezen",
+  "weken",
+  "wraak",
+  "wilde",
+  "wreed",
+  "wrede",
+  "wenst",
+  "woest",
+  "xenon",
+  "yacht",
+  "yucca",
+  "zwaar",
+  "zware",
+  "zesde",
+  "zagen",
+  "zalig",
+  "zomer",
+  "zeden",
+  "zwart",
+  "zeven",
+  "zicht",
+  "zadel",
+  "zweet",
+  "zenuw",
+  "zweer",
+  "zweef",
+  "zaden",
+  "zaken",
+  "zeker",
+  "zever",
+  "zeeen"];
+var input = document.getElementById('guess')
+var button = document.getElementById('button')
+var guess;
 
-var isStarted = false;
-var letterCount = 5;		// default is 5
-var poging = 0;
+var gameloop = function() {
+  var rand = quicklist[math.floor(math.random() * quicklist.length)];
+  var duplicates = (/([a-zA-Z]).*?\1/).test(rand);
+  console.log(rand);
+  var pressn = 1;
 
+  function getAllindexes(arr, val) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++)
+      if (arr[i] === val)
+       indexes.push(i);
+    return indexes;
+  }
 
-function StartGame() {
+  document.getElementById("row1").firstElementChild.innerHTML=rand[0];
 
-    // retrieve checked item, and set letterCount to that value
-    var elements = document.getElementsByName('count');
-    for (var i = 0, length = elements.length; i < length; i++) {
-        if (elements[i].checked) {
-            letterCount = elements[i].value;
-            console.log('Setting letterCount to: ' + letterCount);
-            break;
+  input.onkeypress = function(event) {
+    if (event.key == "Enter" || event.keyCode == 13) {
+      document.getElementById('smallMsg').innerHTML = "Groen = Correct, Geel = Verkeerde plek";
+
+      guess = input.value.toUpperCase();
+
+      var childDivs = document.getElementById(current).getElementByTagName('div');
+      var c = o;
+
+      if(guess.length !== 5) {
+        document.getElementById('smallMsg').innerHTML = "Moeten 5 letters ingevult zijn!";
+        if(pressn===5) {
+          end("Helaas, verloren.")
         }
-    }
-
-    // now create game interface
-    var gameTable = document.getElementById('lingoTable');
-    if (null == gameTable) {
-        alert("Error: can't create game interface, missing element lingoTable");
-        return false;
-    }
-    gameTable.innerHTML = "";
-    // create 5 rows
-    for (var rows = 0; rows<5; rows++) {
-        var row = "<tr>";
-        // create cells
-        for (var cells = 0; cells<letterCount; cells++) {
-            row += "<td><input class='form-control' id='letter" + rows + "." + cells + "'></td>";
-        }
-        row += "</tr>";
-        gameTable.innerHTML += row;
-    }
-
-    // nieuw geheim woord
-	geheimwoord = words[ Math.floor(Math.random() * words.length) ];
-    console.log(geheimwoord);
-    geheimeLetters = geheimwoord.split("");
-
-    // zet eerste letter
-    document.getElementById('letter0.0').value = geheimwoord.charAt(0);
-
-    isStarted = true;
-}
-
-function Check() {
-	// get the HTML elements
-	var guess0 = document.getElementById('letter0.' + poging);
-	var guess1 = document.getElementById('letter1.' + poging);
-	var guess2 = document.getElementById('letter2.' + poging);
-	var guess3 = document.getElementById('letter3.' + poging);
-	var guess4 = document.getElementById('letter4.' + poging);
-
-	// get the letters that were entered
-	var letter0 = guess0.value;
-	var letter1 = guess1.value;
-	var letter2 = guess2.value;
-	var letter3 = guess3.value;
-	var letter4 = guess4.value;
-
-	// haal alle kleurtjes weg
-	guess0.style.backgroundColor = '';
-	guess1.style.backgroundColor = '';
-	guess2.style.backgroundColor = '';
-	guess3.style.backgroundColor = '';
-	guess4.style.backgroundColor = '';
-
-	var goedeletters = geheimeLetters.slice();
-
-	// compare geheimeletter 0 to letter0
-	if ( letter0 == geheimeLetters[0] ) {
-		guess0.style.backgroundColor = "red";
-		goedeletters[0] = '!';
-
-	} else if ( goedeletters.indexOf(letter0) > -1 ) {
-		guess0.style.backgroundColor = "yellow";
-	}
-
-	if ( letter1 == geheimeLetters[1] ) {
-		guess1.style.backgroundColor = "red";
-		goedeletters[1] = '!';
-	} else if ( goedeletters.indexOf(letter1) > -1 ) {
-		guess1.style.backgroundColor = "yellow";
-	}
-
-
-	if ( letter2 == geheimeLetters[2] ) {
-		guess2.style.backgroundColor = "red";
-		goedeletters[2] = '!';
-	} else if ( goedeletters.indexOf(letter2) > -1 ) {
-		guess2.style.backgroundColor = "yellow";
-	}
-
-	if ( letter3 == geheimeLetters[3] ) {
-		guess3.style.backgroundColor = "red";
-		goedeletters[3] = '!';
-	} else if ( goedeletters.indexOf(letter3) > -1 ) {
-		guess3.style.backgroundColor = "yellow";
-	}
-
-	if ( letter4 == geheimeLetters[4] ) {
-		guess4.style.backgroundColor = "red";
-		goedeletters[4] = '!';
-	} else if ( goedeletters.indexOf(letter4) > -1 ) {
-		guess4.style.backgroundColor = "yellow";
-	}
-
-	// verhoog poging van 0 naar 1
-	poging++;
-
-	console.log(goedeletters);
-	document.getElementById('letter0.' + poging).value = geheimwoord.charAt(0);
-
-}
-
-function Populate() {
-	// get the HTML elements
-	var woord = document.getElementById('woord.' + poging).value;
-
-	document.getElementById('letter0.' + poging).value = woord.charAt(0);
-	document.getElementById('letter1.' + poging).value = woord.charAt(1);
-	document.getElementById('letter2.' + poging).value = woord.charAt(2);
-	document.getElementById('letter3.' + poging).value = woord.charAt(3);
-	document.getElementById('letter4.' + poging).value = woord.charAt(4);
-
-}
+        pressn++;
+        document.getElementById(current)firstElementChild,innerHTML=rand[0];
+        return;
+      }

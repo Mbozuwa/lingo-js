@@ -5,8 +5,8 @@
   <title> Lingo </title>
 </head>
   <body>
-    <div id='msgBox'>Guess the word!</div>
-    <div id="smallMsg">Green = correct letter, Yellow = wrong place</div>
+    <div id='msgBox'>Raad het woord!</div>
+    <div id="smallMsg">Groen is correct, Geel is dat het op een andere plek hoort</div>
     <div id="container">
       <div id="row1">
         <div class="square default"></div>
@@ -44,7 +44,7 @@
         <div class="square default"></div>
       </div>
     </div>
-      <input id="guess" onkeypress="submitguess(this)" placeholder='Type your guess!'>
+      <input id="guess" onkeypress="submitguess(this)" maxlength="5" placeholder='Type je antwoord!'>
       <button id="button" class="invisible" onClick="playagain()">Opnieuw proberen?</button>
   <body>
 </html>
